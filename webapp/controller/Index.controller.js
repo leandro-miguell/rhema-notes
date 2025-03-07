@@ -26,10 +26,10 @@ sap.ui.define([
             },
 
             onItemSelect(oEvent) {
-                debugger
                 const item = oEvent.getParameter('item');
                 const key = item.mProperties.key
-                this.navToItemSelected(item,key)
+                this.navToItemSelected(item,key);
+                this.onMenuButtonPress();
             },
 
             navToItemSelected(item,key){
