@@ -1,12 +1,10 @@
 sap.ui.define([
     './BaseController',
-    'sap/ui/Device',
-	'sap/ui/model/json/JSONModel',
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (BaseController, Device, JSONModel) {
+    function (BaseController) {
         "use strict";
 
         return BaseController.extend("workbench.controller.Index", {
@@ -21,11 +19,11 @@ sap.ui.define([
             },
 
             onMenuButtonPress(oEvent) {
-                debugger
                 const button = oEvent?.sId;
                 const toolPage = this.byId("toolPage");
                 if(toolPage.getSideExpanded()){
                     toolPage.setSideExpanded(!toolPage.getSideExpanded());
+                    return;
                 }
                 if(button == "menuButtonPressed"){
                     toolPage.setSideExpanded(!toolPage.getSideExpanded())
@@ -37,6 +35,18 @@ sap.ui.define([
                 const key = item.mProperties.key
                 this.navToItemSelected(item,key);
                 this.onMenuButtonPress();
+            },
+
+            onExpanded(oEvent){
+                var oSelectedItem = oEvent.getParameter("item"); 
+                
+                if (oSelectedItem.getItems().length > 0) {
+                    var bExpanded = oSelectedItem.getExpanded();
+                    
+                    oSelectedItem.setExpanded(!bExpanded);
+                }else{
+                    this.onItemSelect(oEvent);
+                }
             },
 
             navToItemSelected(item,key){

@@ -28,7 +28,7 @@
 		<tnt:sideContent>
 			<tnt:SideNavigation id="_IDGenSideNavigation"
 				selectedKey="{/selectedKey}"
-				itemSelect="onItemSelect"  
+				itemSelect="onExpanded"  
 			>
 				<tnt:NavigationList id="_IDGenNavigationList1" items="{path: '/navigation'}" >
 					<tnt:NavigationListItem id="_IDGenNavigationListItem"
@@ -49,7 +49,7 @@
 					</tnt:NavigationListItem>
 				</tnt:NavigationList>
 				<tnt:fixedItem>
-					<tnt:NavigationList id="_IDGenNavigationList2" items="{path: '/fixedNavigation'}" itemSelect="onItemSelect">
+					<tnt:NavigationList id="_IDGenNavigationList2" items="{path: '/fixedNavigation'}" itemSelect="onExpanded">
 						<tnt:NavigationListItem id="_IDGenNavigationListItem2"
 							text="{title}"
 							icon="{icon}"
