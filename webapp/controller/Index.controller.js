@@ -20,9 +20,16 @@ sap.ui.define([
 			    this.getView().setModel(oModel);
             },
 
-            onMenuButtonPress() {
+            onMenuButtonPress(oEvent) {
+                debugger
+                const button = oEvent?.sId;
                 const toolPage = this.byId("toolPage");
-                toolPage.setSideExpanded(!toolPage.getSideExpanded());
+                if(toolPage.getSideExpanded()){
+                    toolPage.setSideExpanded(!toolPage.getSideExpanded());
+                }
+                if(button == "menuButtonPressed"){
+                    toolPage.setSideExpanded(!toolPage.getSideExpanded())
+                }
             },
 
             onItemSelect(oEvent) {

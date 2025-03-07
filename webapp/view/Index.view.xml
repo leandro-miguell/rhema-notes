@@ -21,16 +21,16 @@
 				
 			>
 				<f:profile>
-					<Avatar id="_IDGenAvatar" initials="{oModel>/login}"/>
+					<Avatar id="_IDGenAvatar" initials="LM"/>
 				</f:profile>
 			</f:ShellBar>
 		</tnt:header>
 		<tnt:sideContent>
 			<tnt:SideNavigation id="_IDGenSideNavigation"
 				selectedKey="{/selectedKey}"
-				itemSelect="onItemSelect"
+				itemSelect="onItemSelect"  
 			>
-				<tnt:NavigationList id="_IDGenNavigationList1" items="{path: '/navigation'}">
+				<tnt:NavigationList id="_IDGenNavigationList1" items="{path: '/navigation'}" >
 					<tnt:NavigationListItem id="_IDGenNavigationListItem"
 						text="{title}"
 						icon="{icon}"
@@ -38,7 +38,7 @@
 						expanded="{expanded}"
 						items="{items}"
 						key="{key}"
-						visible="{oModel>/visible}"
+						visible="{oModel>/visible}" 
 					>
 						<tnt:NavigationListItem id="_IDGenNavigationListItem1"
 							text="{title}"
@@ -49,12 +49,13 @@
 					</tnt:NavigationListItem>
 				</tnt:NavigationList>
 				<tnt:fixedItem>
-					<tnt:NavigationList id="_IDGenNavigationList2" items="{path: '/fixedNavigation'}">
+					<tnt:NavigationList id="_IDGenNavigationList2" items="{path: '/fixedNavigation'}" itemSelect="onItemSelect">
 						<tnt:NavigationListItem id="_IDGenNavigationListItem2"
 							text="{title}"
 							icon="{icon}"
 							key="{key}"
 							visible="{visible}"
+
 						/>
 					</tnt:NavigationList>
 				</tnt:fixedItem>
