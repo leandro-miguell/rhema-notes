@@ -1,0 +1,14 @@
+/* Enter your custom styles here */
+
+.background{
+    background-image: url("../images/maxresdefault.jpg"); /* Caminho relativo */
+    background-size: cover; /* Ajusta a imagem ao tamanho da tela */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh; /* Faz com que ocupe toda a altura da tela */
+    width: 100%;
+}
+
+.bold-text {
+    font-weight: bold;
+}

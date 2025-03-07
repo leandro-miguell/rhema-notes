@@ -1,0 +1,70 @@
+{
+	"selectedKey": "dashboard",
+	"navigation": [
+        {
+			"title": "Início",
+			"icon": "sap-icon://bbyd-dashboard",
+			"key": "dashboard"
+		},
+		{
+			"title": "Teologia",
+			"icon": "sap-icon://course-book",
+			"expanded": false,
+			"items": [{
+				"title":"Introdução a Teologia",
+				"key":"introducao_teologia"
+			},
+			{
+				"title":"Teologia Bíblica",
+				"key":"teologia_biblica"
+			},
+			{
+				"title":"Teologia do homem, pecado e salvação",
+				"key":"teologia_homem_pecado_salvacao"
+			},
+			{
+				"title":"Teologia do Espírito Santo e Igreja",
+				"key":"teologia_espirito_santo_igreja"
+			},{
+				"title":"Teologia dos últimos dias",
+				"key":"teologia_ultimos_dias"
+			}]
+		},
+		{
+			"title": "Aprofundamento Bíblico",
+			"icon": "sap-icon://course-book",
+			"expanded": false,
+			"items": [{
+				"title":"Teologia de Deus e Bíblia",
+				"key":"minhas_aprovacoes"
+			},
+			{
+				"title":"Teologia do Antigo Testamento",
+				"key":"minhas_aprovacoes"
+			},
+			{
+				"title":"Teologia do Novo Testamento",
+				"key":"minhas_aprovacoes"
+			},
+			{
+				"title":"O que a Bíblia diz dos Fins dos Tempos",
+				"key":"minhas_aprovacoes"
+			},
+			{
+				"title":"Hermenêutica Bíblica",
+				"key":"minhas_aprovacoes"
+			},
+			{
+				"title":"Exegese",
+				"key":"minhas_aprovacoes"
+			}]
+		}
+	],
+	"fixedNavigation": [
+		{
+			"title": "Painel de Controle",
+			"icon": "sap-icon://building",
+			"key":"painel_controle"
+		}
+	]
+}

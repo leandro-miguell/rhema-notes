@@ -1,0 +1,22 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <Page
+        id="_IDGenPage"
+        class="background"
+        showHeader="false"
+        showFooter="false"
+    >
+        <content>
+            <MessageStrip
+                id="_IDGenMessageStrip1"
+                class="sapUiTinyMargin bold-text"
+                text="Registros pessoais destinados a servir como fonte de pesquisa, garantindo a preservação e 
+                acessibilidade das minhas anotações. Todo o conteúdo aqui apresentado é baseado em minhas conclusões e
+                entendimentos adquiridos por meio de estudos diários e pesquisas."
+                type="Information"
+            />
+        </content>
+    </Page>
+</mvc:View>

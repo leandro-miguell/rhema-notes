@@ -1,0 +1,237 @@
+<mvc:View
+	controllerName="workbench.controller.minhasaprovacoes"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.f"
+	xmlns:card="sap.f.cards"
+	height="100%"
+>
+	<f:DynamicPage
+		id="dynamicPageId"
+		headerExpanded="true"
+		toggleHeaderOnTitleClick="false"
+		showFooter="false"
+		
+	>
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle id="_IDGenDynamicPageTitle">
+				<f:heading>
+					<Title id="_IDGenTitle"
+						text="{i18n>pageTitle}"
+						wrapping="true"
+					/>
+				</f:heading>
+				<f:actions>
+					<Button id="_IDGenButton1"
+						text="{i18n>update}"
+						type="Emphasized"
+						press=".updateUserData"
+						visible="true"
+					/>
+					<Button
+						id="ApproveButton"
+						text="{i18n>approveItem}"
+						type="Emphasized"
+						press=".onApproveItemPress"
+						enabled="{oModelApprovals>/ActionButtonEnabled}"
+					/>
+					<Button
+						id="RejectButton"
+						text="{i18n>rejectItem}"
+						type="Reject"
+						press=".onRejectItemPress"
+						enabled="{oModelApprovals>/ActionButtonEnabled}"
+					/>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader id="_IDGenDynamicPageHeader" pinnable="false">
+				<FlexBox id="_IDGenFlexBox"
+					alignItems="Center"
+					justifyContent="Start"
+					class="sapUiMediumMarginBottom"
+				>
+					<ObjectStatus
+						id="warning"
+						class="sapUiMediumMarginEnd"
+						text="Selecione uma empresa para filtrar suas aprovações"
+						state="Indication02"
+					/>
+					<Select
+						id="selectEmpresa"
+						width="20rem"
+						selectedKey="{oModelApprovals>/idEmpresa}"
+						forceSelection="false"
+						change="onCompanySelect"
+						items="{ path: 'oModelApprovals>/Companies', sorter: { path: 'IdEmpresas' } }"
+						busy="{oModelApprovals>/companySelectBusy}"
+					>
+						<core:Item id="_IDGenItem"
+							key="{oModelApprovals>IdEmpresas}"
+							text="{oModelApprovals>Empresas}"
+						/>
+					</Select>
+				</FlexBox>
+				<IconTabBar
+					applyContentPadding="false"
+					busy="{oModelApprovals>/IconTabBarBusy}"
+					headerBackgroundDesign="Transparent"
+					id="idIconTabBar"
+					select=".onIconTabBarChange"
+					selectedKey="{oModelApprovals>/IconTabBarSelectedKey}"
+				>
+					<items>
+						<IconTabFilter id="_IDGenIconTabFilter"
+							icon="sap-icon://pending"
+							design="Horizontal"
+							enabled="{oModelApprovals>/IconTabBarEnabled}"
+							iconColor="Default"
+							count="{oModelApprovals>/approvalsTotal/Pendentes}"
+							text="{i18n>pending}"
+							key="null"
+						/>
+						<IconTabFilter id="_IDGenIconTabFilter1"
+							icon="sap-icon://accept"
+							design="Horizontal"
+							enabled="{oModelApprovals>/IconTabBarEnabled}"
+							iconColor="Positive"
+							count="{oModelApprovals>/approvalsTotal/Aprovados}"
+							text="{i18n>approved30}"
+							key="Aprov"
+						/>
+						<IconTabFilter id="_IDGenIconTabFilter2"
+							icon="sap-icon://decline"
+							design="Horizontal"
+							enabled="{oModelApprovals>/IconTabBarEnabled}"
+							iconColor="Negative"
+							count="{oModelApprovals>/approvalsTotal/Rejeitados}"
+							text="{i18n>rejected30}"
+							key="Recu"
+						/>
+						<IconTabFilter id="_IDGenIconTabFilter3"
+							icon="sap-icon://employee-approvals"
+							design="Horizontal"
+							enabled="{oModelApprovals>/IconTabBarEnabled}"
+							iconColor="Positive"
+							count="{oModelApprovals>/approvalsTotal/AprovadosSemParticipacao}"
+							text="{i18n>approvedNoPart30}"
+							key="Aprovem"
+						/>
+						<IconTabFilter id="_IDGenIconTabFilter4"
+							icon="sap-icon://employee-rejections"
+							design="Horizontal"
+							enabled="{oModelApprovals>/IconTabBarEnabled}"
+							iconColor="Negative"
+							count="{oModelApprovals>/approvalsTotal/RejeitadosSemParticipacao}"
+							text="{i18n>rejectedNoPart30}"
+							key="rejeitadosem"
+						/>
+					</items>
+				</IconTabBar>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<l:DynamicSideContent
+				id="DynamicSideContent"
+				class="sapUiDSCExplored sapUiContentPadding"
+				sideContentFallDown="BelowM"
+				sideContentPosition="Begin"
+				containerQuery="true"
+				breakpointChanged="handleBreakpointChanged"
+			>
+				<l:VerticalLayout
+					id="contentFragment"
+					
+				>
+					<l:content>
+					</l:content>
+				</l:VerticalLayout>
+				<l:sideContent>
+					<Title id="_IDGenTitle1"
+						titleStyle="H2"
+						text="{i18n>requisitions}"
+					/>
+					<List
+						id="testeList"
+						class="sapUiSmallMarginBottom"
+						mode="SingleSelectMaster"
+						items="{oModelApprovals>/REQList}"
+						busy="{oModelApprovals>/REQListBusy}"
+						selectionChange="onSelectRequestItem"
+					>
+						<StandardListItem id="_IDGenStandardListItem"
+							title="{oModelApprovals>/documentText}: {oModelApprovals>DocEntryAprovacao}"
+							highlight="{oModelApprovals>highlight}"
+							selected="{oModelApprovals>REQSelected}"
+							description="{i18n>documentDate}: {oModelApprovals>U_Data_inic}"
+						/>
+					</List>
+					<FlexBox id="_IDGenFlexBox1"
+						alignItems="Center"
+						justifyContent="Center"
+						class="sapUiLargeMarginBottom"
+					>
+						<items>
+							<Button id="_IDGenButton2"
+								class="sapUiSmallMarginEnd"
+								icon="sap-icon://arrow-left"
+								press="previousButtonPress('REQ')"
+								type="Emphasized"
+								enabled="{oModelApprovals>/REQPreviousEnabled}"
+							/>
+							<Button id="_IDGenButton3"
+								icon="sap-icon://arrow-right"
+								press="nextButtonPress('REQ')"
+								type="Emphasized"
+								enabled="{oModelApprovals>/REQNextEnabled}"
+							/>
+						</items>
+					</FlexBox>
+					<Title id="_IDGenTitle2"
+						titleStyle="H2"
+						text="{i18n>orders}"
+					/>
+					<List id="_IDGenList"
+						mode="SingleSelectMaster"
+						items="{oModelApprovals>/PEDList}"
+						busy="{oModelApprovals>/PEDListBusy}"
+						selectionChange="onSelectOrderItem"
+					>
+						<StandardListItem id="_IDGenStandardListItem1"
+							title="{oModelApprovals>/documentText}: {oModelApprovals>DocEntryAprovacao}"
+							highlight="{oModelApprovals>highlight}"
+							selected="{oModelApprovals>PEDSelected}"
+							description="{i18n>documentDate}: {oModelApprovals>U_Data_inic}"
+						/>
+					</List>
+					<FlexBox id="_IDGenFlexBox2"
+						alignItems="Center"
+						justifyContent="Center"
+						class="sapUiLargeMarginBottom"
+					>
+						<items>
+							<Button id="_IDGenButton4"
+								class="sapUiSmallMarginEnd"
+								icon="sap-icon://arrow-left"
+								press="previousButtonPress('PED')"
+								type="Emphasized"
+								enabled="{oModelApprovals>/PEDPreviousEnabled}"
+							/>
+							<Button id="_IDGenButton5"
+								icon="sap-icon://arrow-right"
+								press="nextButtonPress('PED')"
+								type="Emphasized"
+								enabled="{oModelApprovals>/PEDNextEnabled}"
+							/>
+						</items>
+					</FlexBox>
+				</l:sideContent>
+			</l:DynamicSideContent>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>
