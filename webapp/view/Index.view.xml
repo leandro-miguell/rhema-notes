@@ -20,9 +20,6 @@
 				notificationsNumber="false"
 				
 			>
-				<f:profile>
-					<Avatar id="_IDGenAvatar" initials="LM"/>
-				</f:profile>
 			</f:ShellBar>
 		</tnt:header>
 		<tnt:sideContent>
