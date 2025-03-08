@@ -11,7 +11,7 @@
 		<tnt:header>
 			<f:ShellBar id="_IDGenShellBar"
 				homeIcon="../images/bible_2600768.png"
-				title="Rhema Notas - Estudos e Reflexões"
+				title="Rhema Notes"
 				showMenuButton="true"
 				showCopilot="false"
 				showNotifications="false"
